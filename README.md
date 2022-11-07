@@ -1,5 +1,5 @@
 # Simple UNIX Shell
-<hr>
+
 ## About
 
 This is a simple UNIX shell that performs most tasks that a standard UNIX shell
