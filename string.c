@@ -34,7 +34,7 @@ char *concat_string(char *str[])
 		return (str[0]);
 	for (i = 0; str[i] != NULL; i++)
 		len = len + _strlen(str[i]);
-	all = malloc(sizeof(char) * len + 1);
+	all = malloc(sizeof(char) * (len + 1));
 	if (all == NULL)
 		return (NULL);
 	for (i = 0, m = 0; str[i] != NULL; i++)
