@@ -55,13 +55,18 @@ char *prompt(char *msg)
 	_fputs(msg, STDOUT_FILENO);
 	ret = getline(&input, &len, stdin);
 	if (ret == -1)
+	{
+		free(input);
 		return (NULL);
+	}
 	end_it(input, "\n");
 	return (input);
 }
 
 /**
- * main - test the code.
+ * main - entry point of the shell programe.
+ * @argc: The number of arguments passed to main.
+ * @argv: The actual array of the arguments.
  *
  * Return: Always 0.
  */
@@ -69,8 +74,7 @@ int main(__attribute__((unused))int argc, char *argv[])
 {
 	/* path_l *path_head; */
 	char *input = NULL, *promp_msg = "#cisfun$ ";
-	char *args[] = {NULL, NULL};
-
+	char **args = NULL;
 
 	while (1)
 	{
@@ -80,8 +84,9 @@ int main(__attribute__((unused))int argc, char *argv[])
 			_fputs("\n", STDOUT_FILENO);
 			exit(errno);
 		}
-		args[1] = input;
-		_execute(input, args, argv[0]);
+		args = _split(input, " ");
+		_execute(args[0], args, argv[0]);
+		free_darray(args, 1);
 		free(input);
 	}
 }
