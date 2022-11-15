@@ -10,5 +10,6 @@ int num_of_delim(char *, char *);
 char *_strdup(const char *);
 ssize_t _fputs(char *, int);
 char *end_it(char *, char *);
+char **_split(char *, char *);
 
 #endif

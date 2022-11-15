@@ -42,3 +42,37 @@ char *end_it(char *str, char *delim)
 		return (NULL);
 	return (str);
 }
+
+/**
+ * _split - split a string @str.
+ * @str: The string to be splited.
+ * @delim: The delimeters to split the string with.
+ *
+ * Return: array of the splited strings (success), NULL (error).
+ */
+char **_split(char *str, char *delim)
+{
+	char *dup = NULL, **splits = NULL;
+	int i;
+
+	if (str == NULL || delim == NULL)
+		return (NULL);
+	i = num_of_delim(str, delim);
+	dup = _strdup(str);
+	if (dup == NULL)
+		return (NULL);
+	splits = malloc(sizeof(char *) * (i + 2));
+	if (splits == NULL)
+	{
+		free(dup);
+		return (NULL);
+	}
+	i = 0;
+	splits[i++] = strtok(dup, delim);
+	do {
+		splits[i] = strtok(NULL, delim);
+	} while (splits[i++] != NULL);
+	return (splits);
+}
+
+
