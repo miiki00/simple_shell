@@ -72,21 +72,38 @@ char *prompt(char *msg)
  */
 int main(__attribute__((unused))int argc, char *argv[])
 {
-	/* path_l *path_head; */
+	path_l *path_head;
 	char *input = NULL, *promp_msg = "#cisfun$ ";
+	char *inp_path = NULL;
 	char **args = NULL;
 
+	path_head = init_path();
 	while (1)
 	{
 		input = prompt(promp_msg);
 		if (input == NULL)
-		{
-			_fputs("\n", STDOUT_FILENO);
-			exit(errno);
-		}
+			break;
 		args = _split(input, " ");
-		_execute(args[0], args, argv[0]);
+		if (*input != '.')
+		{
+			inp_path = is_there(args[0], path_head);
+			if (inp_path == NULL)
+			{
+				_fputs(argv[0], STDERR_FILENO);
+				_fputs(" : No such file or directory\n", STDERR_FILENO);
+			}
+		}
+		if (*input == '.')
+			inp_path = _strdup(input);
+		if (inp_path != NULL || *input == '.')
+		{
+			_execute(inp_path, args, argv[0]);
+		}
+		free(inp_path);
 		free_darray(args, 1);
 		free(input);
 	}
+	free_path(path_head);
+	_fputs("\n", STDOUT_FILENO);
+	exit(errno);
 }
