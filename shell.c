@@ -73,7 +73,7 @@ char *prompt(char *msg)
 int main(__attribute__((unused))int argc, char *argv[])
 {
 	path_l *path_head;
-	char *input = NULL, *promp_msg = "#cisfun$ ";
+	char *input = NULL, *promp_msg = "#cisfun$ ", *code = "exit";
 	char *inp_path = NULL;
 	char **args = NULL;
 
@@ -84,7 +84,9 @@ int main(__attribute__((unused))int argc, char *argv[])
 		if (input == NULL)
 			break;
 		args = _split(input, " ");
-		if (*input != '.')
+		if (*input == *code)
+			exit(0);
+		if (*input != '.' && *input != *code)
 		{
 			inp_path = is_there(args[0], path_head);
 			if (inp_path == NULL)
