@@ -73,7 +73,7 @@ char *prompt(char *msg)
 int main(__attribute__((unused))int argc, char *argv[])
 {
 	path_l *path_head;
-	char *input = NULL, *promp_msg = "#cisfun$ ", *code = "exit";
+	char *input = NULL, *promp_msg = "#cisfun$ ";
 	char *inp_path = NULL;
 	char **args = NULL;
 
@@ -84,9 +84,7 @@ int main(__attribute__((unused))int argc, char *argv[])
 		if (input == NULL)
 			break;
 		args = _split(input, " ");
-		if (*input == *code)
-			exit(0);
-		if (*input != '.' && *input != *code)
+		if (*input != '.' && *input != '/')
 		{
 			inp_path = is_there(args[0], path_head);
 			if (inp_path == NULL)
@@ -95,12 +93,11 @@ int main(__attribute__((unused))int argc, char *argv[])
 				_fputs(" : No such file or directory\n", STDERR_FILENO);
 			}
 		}
-		if (*input == '.')
-			inp_path = _strdup(input);
-		if (inp_path != NULL || *input == '.')
-		{
-			_execute(inp_path, args, argv[0]);
-		}
+		if (*input == '.' || *input == '/')
+			inp_path = _strdup(args[0]);
+		if (inp_path != NULL)
+			if (*inp_path == '.' || *inp_path == '/' || inp_path != NULL)
+				_execute(inp_path, args, argv[0]);
 		free(inp_path);
 		free_darray(args, 1);
 		free(input);
