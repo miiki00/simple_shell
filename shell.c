@@ -31,6 +31,7 @@ int _execute(char *path, char **args, char *prog)
 	else
 	{
 		wait(&_stat);
+		_fputs("\n", STDOUT_FILENO);
 	}
 	return (1);
 }
