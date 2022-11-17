@@ -22,7 +22,7 @@ can perform. It was assignment project form our school [@HolbertonALX](https://w
 To preceed with the installation process you will need the following tools.
 
 * A machine that is running Linux distro.
-* Gcc compiler ([Gcc compiler](https://gcc.gnu.org/))
+* [Gcc compiler](https://gcc.gnu.org/)
 
 If you got this two installed we can preceed
 ```
