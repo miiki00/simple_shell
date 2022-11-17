@@ -29,6 +29,38 @@ If you got this two installed we can preceed
 gcc -std=gnu89 *.c -o hsh
 ./hsh
 ```
+Example input output:
+```
+SHELL> gcc -std=gnu89 *.c -o hsh
+SHELL> ls
+a.out  AUTHORS  DEV  hsh  lenv.c  lenv.h  lmemory.h  lstring.h  main.h  memory.c  README.md  shell.c  string_2.c  string.c  text
+SHELL> ./hsh 
+#cisfun$ ls
+a.out  AUTHORS  DEV  hsh  lenv.c  lenv.h  lmemory.h  lstring.h  main.h  memory.c  README.md  shell.c  string_2.c  string.c  text
+
+#cisfun$ ls
+a.out  AUTHORS  DEV  hsh  lenv.c  lenv.h  lmemory.h  lstring.h  main.h  memory.c  README.md  shell.c  string_2.c  string.c  text
+
+#cisfun$ ls
+a.out  AUTHORS  DEV  hsh  lenv.c  lenv.h  lmemory.h  lstring.h  main.h  memory.c  README.md  shell.c  string_2.c  string.c  text
+
+#cisfun$ test 
+
+#cisfun$ test
+
+#cisfun$ file
+Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
+            [--mime-type] [-e <testname>] [-F <separator>]  [-f <namefile>]
+            [-m <magicfiles>] [-P <parameter=value>] [--exclude-quiet]
+            <file> ...
+       file -C [-m <magicfiles>]
+       file [--help]
+
+#cisfun$ jl   
+./hsh : No such file or directory
+#cisfun$ 
+````
+
 Now you are good to go.
 
 ### Feature supported for the moument
